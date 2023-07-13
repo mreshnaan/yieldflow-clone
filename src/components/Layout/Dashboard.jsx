@@ -50,6 +50,7 @@ const Dashboard = ({ children }) => {
             style={{
               margin: "0px auto",
               padding: "30px 30px",
+              paddingTop: "10px",
               width: "100%",
               display: "flex",
               alignItems: "center",
@@ -60,7 +61,13 @@ const Dashboard = ({ children }) => {
               onClick={showDrawer}
               icon={<MenuOutlined />}
             ></Button>
-            <Logo style={{ marginBottom: "0px" }} />
+            <Logo
+              style={{ marginBottom: "0px", zIndex: 1 }}
+              imageStyle={{
+                width: "200px",
+                height: "100px",
+              }}
+            />
             <Drawer width={280} placement="left" onClose={onClose} open={open}>
               <div
                 style={{
@@ -162,6 +169,7 @@ const Dashboard = ({ children }) => {
               style={{
                 maxWidth: "1050px",
                 margin: "0px auto",
+                marginRight: "10%",
                 padding: "0px 30px",
                 width: "100%",
               }}

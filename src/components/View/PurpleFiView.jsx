@@ -3,7 +3,7 @@ import HeadLine from "../HeadLine";
 import JPGLogo from "../../assets/img/single-logo.jpg";
 import RenderItem from "../RenderItem";
 
-function YflowView() {
+function PurpleFiView() {
   const buttons = [
     {
       title: "Learn More",
@@ -21,7 +21,7 @@ function YflowView() {
       },
     },
     {
-      title: "Buy $Yflow",
+      title: "Buy $PURP",
       path: "/buy-yflow",
       style: {
         fontWeight: "600",
@@ -91,9 +91,9 @@ function YflowView() {
   const stackingItems = [
     {
       img: JPGLogo,
-      title: "Yieldflow Staking No Lock",
+      title: "PurpleFi X Fund Staking No Lock",
       tooltip_message:
-        "YieldFlow is a DeFi token that powers the YieldFlow platform. Owners benefit from reduced fees and increased affiliate earnings.",
+        "PurpleFi X Fund is a DeFi token that powers the PurpleFi X Fund platform. Owners benefit from reduced fees and increased affiliate earnings.",
       data: {
         apy: "12.5%",
         pool: "in a month",
@@ -103,9 +103,9 @@ function YflowView() {
     },
     {
       img: JPGLogo,
-      title: "Yieldflow Staking 6M Lock",
+      title: "PurpleFi X Fund Staking 6M Lock",
       tooltip_message:
-        "YieldFlow is a DeFi token that powers the YieldFlow platform. Owners benefit from reduced fees and increased affiliate earnings.",
+        "PurpleFi X Fund is a DeFi token that powers the PurpleFi X Fund platform. Owners benefit from reduced fees and increased affiliate earnings.",
       data: {
         apy: "12.5%",
         pool: "in a month",
@@ -115,9 +115,9 @@ function YflowView() {
     },
     {
       img: JPGLogo,
-      title: "Yieldflow Staking 12M Lock",
+      title: "PurpleFi X Fund Staking 12M Lock",
       tooltip_message:
-        "YieldFlow is a DeFi token that powers the YieldFlow platform. Owners benefit from reduced fees and increased affiliate earnings.",
+        "PurpleFi X Fund is a DeFi token that powers the PurpleFi X Fund platform. Owners benefit from reduced fees and increased affiliate earnings.",
       data: {
         apy: "17.5%",
         pool: "in a month",
@@ -127,9 +127,9 @@ function YflowView() {
     },
     {
       img: JPGLogo,
-      title: "Yieldflow Staking 3Y Lock",
+      title: "PurpleFi X Fund Staking 3Y Lock",
       tooltip_message:
-        "YieldFlow is a DeFi token that powers the YieldFlow platform. Owners benefit from reduced fees and increased affiliate earnings.",
+        "PurpleFi X Fund is a DeFi token that powers the PurpleFi X Fund platform. Owners benefit from reduced fees and increased affiliate earnings.",
       data: {
         apy: "20.5%",
         pool: "in a month",
@@ -141,13 +141,13 @@ function YflowView() {
 
   return (
     <>
-      <HeadLine title={"yieldflow"} />
+      <HeadLine title={"PurpleFi X Fund"} />
       <Banner
         bg="#4b1e96"
         color={"#fff"}
         buttons={buttons}
         title="Creating the Future of Finance Today."
-        content="Yieldflow offers a wide variety of preselected and valuable digital assets that earn yields for you via smart contracts – hence your assets always belong to you."
+        content="PurpleFi offers a wide variety of preselected and valuable digital assets that earn yields for you via smart contracts – hence your assets always belong to you."
         svgImage={
           "https://app.yieldflow.com/static/media/big-card-2.8212817a6181d4294181f105197139d0.svg"
         }
@@ -160,4 +160,4 @@ function YflowView() {
   );
 }
 
-export default YflowView;
+export default PurpleFiView;

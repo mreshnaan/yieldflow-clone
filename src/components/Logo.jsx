@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import SvgLogo from "../assets/svg/purplefi-logo.svg";
-function Logo({ style }) {
+function Logo({ style, imageStyle }) {
   return (
     <div
       style={{
@@ -12,7 +12,7 @@ function Logo({ style }) {
         ...style,
       }}
     >
-      <img src={SvgLogo} alt="Logo" />
+      <img src={SvgLogo} alt="Logo" style={imageStyle} />
     </div>
   );
 }

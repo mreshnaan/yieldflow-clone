@@ -1,10 +1,10 @@
 import Dashboard from "../components/Layout/Dashboard";
-import YflowView from "../components/View/YflowView";
+import PurpleFiView from "../components/View/PurpleFiView";
 
 function Yflow() {
   return (
     <Dashboard>
-      <YflowView />
+      <PurpleFiView />
     </Dashboard>
   );
 }

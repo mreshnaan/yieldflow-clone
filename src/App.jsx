@@ -1,7 +1,7 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Yflow from "./pages/Yflow";
+import PurpleFi from "./pages/PurpleFi";
 import Error from "./pages/Error";
 import Stacking from "./pages/Stacking";
 import LiquidityPool from "./pages/LiquidityPool";
@@ -18,8 +18,8 @@ function App() {
       element: <Home />,
     },
     {
-      path: "/yflow",
-      element: <Yflow />,
+      path: "/purplefi",
+      element: <PurpleFi />,
     },
     {
       path: "/staking",

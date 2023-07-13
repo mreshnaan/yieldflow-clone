@@ -17,7 +17,7 @@ const items = [
   getItem(<Link to="/">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
   getItem("products", "sub1", <CustomIcons svg={ProductSvg} />, [
     getItem(
-      <Link to="/yflow">YFlow</Link>,
+      <Link to="/purplefi">X Fund</Link>,
       "3",
       <CustomIcons svg={WalletSvg} />
     ),
