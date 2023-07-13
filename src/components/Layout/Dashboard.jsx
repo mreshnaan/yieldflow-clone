@@ -91,7 +91,7 @@ const Dashboard = ({ children }) => {
                     width: "100%",
                   }}
                 >
-                  <Amount amount={"9.8"} />
+                  <Amount amount={"1.3"} />
                   <Button
                     size="large"
                     type="primary"
@@ -140,7 +140,7 @@ const Dashboard = ({ children }) => {
                 width: "100%",
               }}
             >
-              <Amount amount={"9.8"} />
+              <Amount amount={"1.3"} />
               <Button
                 size="large"
                 type="primary"
