@@ -1,6 +1,6 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
-import RenderItems from "../RenderItems";
+import RenderItem from "../RenderItem";
 
 function LendingView() {
   const buttons = [
@@ -90,7 +90,7 @@ function LendingView() {
       />
       <HeadLine id="lending-title" title={"Ongoing batches"} />
 
-      <RenderItems items={stackingItems} />
+      <RenderItem items={stackingItems} />
      
     </>
   );

@@ -1,7 +1,7 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
 import JPGLogo from "../../assets/img/single-logo.jpg";
-import RenderItems from "../RenderItems";
+import RenderItem from "../RenderItem";
 
 function YflowView() {
   const buttons = [
@@ -153,7 +153,9 @@ function YflowView() {
         }
       />
 
-      <RenderItems items={stackingItems} />
+
+
+      <RenderItem items={stackingItems} />
     </>
   );
 }

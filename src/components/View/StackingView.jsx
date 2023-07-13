@@ -1,6 +1,7 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
-import RenderItems from "../RenderItems";
+import RenderItem from "../RenderItem";
+
 
 function StackingView() {
   const StackingButtons = [
@@ -93,7 +94,7 @@ function StackingView() {
       />
       <HeadLine title={"Products"} />
 
-      <RenderItems items={stackingItems} />
+      <RenderItem items={stackingItems} />
     </>
   );
 }

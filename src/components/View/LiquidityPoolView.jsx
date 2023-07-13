@@ -1,6 +1,6 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
-import RenderItems from "../RenderItems";
+import RenderItem from "../RenderItem";
 
 function LiquidityPoolView() {
   const buttons = [
@@ -124,7 +124,7 @@ function LiquidityPoolView() {
       />
       <HeadLine id="liquidity-pool-title" title={"Browse Pairs"} />
 
-      <RenderItems items={stackingItems} />
+      <RenderItem items={stackingItems} />
     </>
   );
 }
