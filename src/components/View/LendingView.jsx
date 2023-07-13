@@ -1,6 +1,6 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
-import RenderItems from "../renderItems";
+import RenderItems from "../RenderItems";
 
 function LendingView() {
   const buttons = [

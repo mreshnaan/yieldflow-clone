@@ -1,7 +1,7 @@
 import Banner from "../Cards/Banner";
 import HeadLine from "../HeadLine";
 import JPGLogo from "../../assets/img/single-logo.jpg";
-import RenderItems from "../renderItems";
+import RenderItems from "../RenderItems";
 
 function YflowView() {
   const buttons = [
