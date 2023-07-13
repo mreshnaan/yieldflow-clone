@@ -3,6 +3,7 @@ import { Card, Row, Col, Tooltip, Button } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 function Staking({ buttons, title, tooltip_message, img, data }) {
+  console.log("img :", img);
   return (
     <Card
       style={{
@@ -29,10 +30,11 @@ function Staking({ buttons, title, tooltip_message, img, data }) {
           >
             <img
               style={{
+                borderRadius: "50%",
                 marginLeft: "30px",
                 marginRight: "20px",
-                width: "30px",
-                height: "30px",
+                width: "35px",
+                height: "35px",
               }}
               src={img}
               alt="Banner Image"

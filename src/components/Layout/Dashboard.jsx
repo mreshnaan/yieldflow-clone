@@ -89,7 +89,9 @@ const Dashboard = ({ children }) => {
                     size="large"
                     type="primary"
                     style={{
+                      background: "rgb(75, 30, 150) !important",
                       width: "100%",
+                      height: "50px",
                     }}
                     onClick={showModal}
                   >

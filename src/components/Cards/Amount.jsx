@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import JPGLogo from "../../assets/img/single-logo.jpg";
 function Amount({ amount }) {
   return (
     <>
@@ -15,10 +16,11 @@ function Amount({ amount }) {
           }}
         >
           <img
-            src="https://app.yieldflow.com/static/media/yflow.f7f20cc9cbb65517a4edff4becfba279.svg"
+            src={JPGLogo}
             style={{
-              width: "25px",
-              height: "25px",
+              borderRadius: "50%",
+              width: "35px",
+              height: "35px",
               backgroundColor: "rgb(251, 251, 252)",
               fontfamily: "Poppins !important",
 

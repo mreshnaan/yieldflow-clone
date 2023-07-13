@@ -1,7 +1,11 @@
 import { Col, Row } from "antd";
 
 import Status from "../Cards/Status";
-import { WalletOutlined, EyeOutlined,EyeInvisibleOutlined } from "@ant-design/icons";
+import {
+  WalletOutlined,
+  EyeOutlined,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons";
 import HeadLine from "../HeadLine";
 import CustomTable from "../Table/CustomTable";
 import { useState } from "react";
@@ -46,7 +50,8 @@ function HomeView() {
       >
         <Col xs={24} sm={24} md={24} lg={12}>
           <Status
-            bg="rgb(16, 97, 254)"
+           btnBg="rgb(245 245 245 / 17%)"
+            bg="#4b1e96"
             icon={<WalletOutlined style={{ fontSize: "25px" }} />}
             title="Total assets"
             amount={show ? "0.00" : "****"}

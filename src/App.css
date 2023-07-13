@@ -14,8 +14,9 @@ body {
 }
 
 
-.ant-menu-item-selected {
-  background-color: #1061FE !important;
+.ant-menu>.ant-menu-item-selected,
+.ant-menu>.ant-menu-item:hover {
+  background-color: rgb(75, 30, 150) !important;
   color: #fff !important;
 }
 
@@ -33,5 +34,4 @@ body {
 .ant-menu > .ant-menu-item-selected,
 .ant-menu > .ant-menu-submenu-selected {
   color: red;
-  border-bottom: 2px solid red;
 } */

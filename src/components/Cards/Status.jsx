@@ -38,7 +38,7 @@ function Status({ bg, title, amount, icon, color, btnBg, onClickHandler }) {
             type="primary"
             shape="circle"
             style={{
-              background: btnBg ? btnBg : "rgb(99, 141, 248)",
+              background: btnBg ? btnBg : "#fff",
               width: "50px",
               height: "50px",
               display: "flex",

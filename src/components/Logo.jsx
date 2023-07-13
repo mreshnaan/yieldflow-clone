@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import SvgLogo from "../assets/svg/logo.svg";
+import SvgLogo from "../assets/svg/purplefi-logo.svg";
 function Logo({ style }) {
   return (
     <div

@@ -52,7 +52,8 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
-            fontFamily: "Poppins,sans-serif !important"
+            fontFamily: "Poppins,sans-serif !important",
+            colorPrimary: 'rgb(75, 30, 150)',
           },
         }}
       >
