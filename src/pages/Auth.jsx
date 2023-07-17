@@ -12,6 +12,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useEffect } from "react";
+import Logo from "../components/Logo";
 
 function Auth() {
   const [user] = useAuthState(auth);
@@ -29,7 +30,7 @@ function Auth() {
   useEffect(() => {
     if (user) {
       // user is already signed in
-      navigate("/");
+      navigate("/portfolio");
     } else {
       // user is not signed in but the link is valid
       if (isSignInWithEmailLink(auth, window.location.href)) {
@@ -46,7 +47,6 @@ function Auth() {
           window.location.href
         )
           .then((result) => {
-            // we can get the user from result.user but no need in this case
             console.log(result.user);
             localStorage.removeItem("email");
             toast.dismiss(toastId);
@@ -110,8 +110,16 @@ function Auth() {
           alignItems: "center",
           minHeight: "100vh",
           height: "100%",
+          flexDirection:"column"
         }}
       >
+        <Logo
+          style={{ marginBottom: "0px", zIndex: 1 }}
+          imageStyle={{
+            width: "300px",
+            height: "150px",
+          }}
+        />
         <Card
           style={{
             width: "350px",
@@ -124,10 +132,11 @@ function Auth() {
             padding: "30px 40px",
           }}
         >
-          <Row gutter={[16, 16]}>
+          <Row gutter={[16, 16]} justify={"center"}>
             <Col span={24} style={{ padding: "6px" }}>
               <p
                 style={{
+                  textAlign:"center",
                   margin: "0px 0px 12px",
                   fontSize: "26px",
                   fontWeight: "bold",
