@@ -209,6 +209,7 @@ function Staking({ buttons, title, tooltip_message, img, data }) {
                     width: "100%",
                     ...button.style,
                   }}
+                  onClick={button.onClickHandler}
                   type={button.type}
                   href={button.path}
                 >

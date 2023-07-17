@@ -10,11 +10,17 @@ import Lending from "./pages/Lending";
 import AffiliateLeadership from "./pages/AffiliateLeadership";
 import { ConfigProvider } from "antd";
 
+import Auth from "./pages/Auth";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const routers = createBrowserRouter([
     {
       path: "/",
+      element: <Auth />,
+    },
+    {
+      path: "/portfolio",
       element: <Home />,
     },
     {
@@ -53,10 +59,11 @@ function App() {
         theme={{
           token: {
             fontFamily: "Poppins,sans-serif !important",
-            colorPrimary: 'rgb(75, 30, 150)',
+            colorPrimary: "rgb(75, 30, 150)",
           },
         }}
       >
+        <Toaster position="top-center" reverseOrder={false} />
         <RouterProvider router={routers} />
       </ConfigProvider>
     </>
