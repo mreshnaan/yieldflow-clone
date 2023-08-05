@@ -11,16 +11,17 @@ import {
 } from "wagmi";
 import { toast } from "react-hot-toast";
 import { Configs } from "../../utils/configs";
-
 const WalletModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isConnected, address } = useAccount();
+  const { connector, isConnected, address } = useAccount();
 
   const { chain } = useNetwork();
   const {
+    // connect,
     connectors,
     error,
     isLoading,
+    pendingConnector,
     connectAsync,
   } = useConnect();
   const { disconnect } = useDisconnect();
@@ -30,6 +31,7 @@ const WalletModal = () => {
     isSuccess,
     error: signError,
     isLoading: isSignLoading,
+    status,
   } = useSignMessage();
 
   const showModal = () => {
@@ -97,6 +99,8 @@ const WalletModal = () => {
     if (!isChainSupported) {
       disconnect();
     }
+    // console.log("chain");
+    // console.dir(chain);
   }, [chain]);
 
   //wallet connect status
@@ -140,19 +144,16 @@ const WalletModal = () => {
         successToastId = toast.success("Signed");
       }
       if (signError) {
-        // if (signError.details === "Connector not found") {
-        //   console.log(signError.details);
+        // if (signError.message === "Connector not found") {
         //   errorToastId = toast.error(
         //     "Error connecting wallet: " + "PLease sign in to Continue"
         //   );
-        // } else {}
-        console.log(signError.details);
+        // } else {
         errorToastId = toast.error(
-          "Error connecting wallet: " + signError.details
+          "Error connecting wallet: " + signError.message
         );
-        setTimeout(() => {
-          disconnect();
-        }, 1500);
+        disconnect();
+        // }
       }
     }
     return () => {
@@ -173,6 +174,7 @@ const WalletModal = () => {
     const nonce = Date.now().toString();
     const signatureMessage = `nonce: ${nonce} address:${signer}`;
     await signMessage({ message: signatureMessage });
+    console.log("signature : ", data && data);
   };
 
   // const isCheckUserExist = () => {};
@@ -209,10 +211,10 @@ const WalletModal = () => {
 
   return (
     <>
-      {isSuccess && (
+      {isConnected && (
         <>
           <div>
-            {data && (
+            {isSuccess && (
               <div>
                 <div>Signature: {data}</div>
               </div>
@@ -232,7 +234,7 @@ const WalletModal = () => {
           </div>
         </>
       )}
-      {!isSuccess && (
+      {!isConnected && (
         <>
           <Button
             size="large"
@@ -244,7 +246,8 @@ const WalletModal = () => {
             }}
             onClick={showModal}
           >
-            {isLoading || isSignLoading ? " Connecting..." : " Connect Wallet"}
+            Connect Wallet
+            {isLoading && " (Connecting)"}
           </Button>
         </>
       )}

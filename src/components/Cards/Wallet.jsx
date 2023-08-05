@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 
-function Wallet({ img, title, subTitle }) {
+function Wallet({ img, title, subTitle, onClickHandler }) {
   return (
     <>
-      <div
+      <a
+        onClick={onClickHandler}
         style={{
           display: "flex",
           justifyContent: "center",
@@ -41,7 +42,7 @@ function Wallet({ img, title, subTitle }) {
         >
           {subTitle}
         </h6>
-      </div>
+      </a>
     </>
   );
 }

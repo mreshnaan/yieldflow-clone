@@ -1,4 +1,6 @@
 import { Menu } from "antd";
+import { UserOutlined } from '@ant-design/icons';
+
 import { AffiliateSvg, HomeSvg, ProductSvg, WalletSvg } from "./Icon/Icons";
 import CustomIcons from "./Icon/CustomIcons";
 import { useEffect, useState } from "react";
@@ -49,6 +51,7 @@ const items = [
       <CustomIcons svg={WalletSvg} />
     ),
   ]),
+  getItem(<Link to="/profile">Profile</Link>, "9", <UserOutlined />),
 ];
 
 const MenuItems = () => {
