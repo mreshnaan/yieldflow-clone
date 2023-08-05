@@ -39,7 +39,8 @@ function Wallet({ img, title, subTitle, onClickHandler }) {
             wordBreak: "break-word",
             lineHeight: "1.6",
             fontSize: "14px",
-            margin:"10px"
+            margin: "0px",
+            marginBottom: "30px"
           }}
         >
           {subTitle}
