@@ -10,6 +10,7 @@ function Wallet({ img, title, subTitle, onClickHandler }) {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          paddingTop:"16px"
         }}
       >
         <img
@@ -38,6 +39,7 @@ function Wallet({ img, title, subTitle, onClickHandler }) {
             wordBreak: "break-word",
             lineHeight: "1.6",
             fontSize: "14px",
+            margin:"10px"
           }}
         >
           {subTitle}
