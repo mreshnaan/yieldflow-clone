@@ -108,7 +108,7 @@ const WalletModal = () => {
     }
 
     if (error) {
-      errorToastId = toast.error("Error connecting wallet: " + error.message);
+      errorToastId = toast.error("Error connecting wallet: " + error.details);
     }
 
     if (isConnected) {
