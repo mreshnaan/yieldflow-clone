@@ -28,77 +28,140 @@ function Auth() {
   };
 
   useEffect(() => {
+    // Check if the user already exists on the backend and firebase
+    //else register
     if (user) {
-      // user is already signed in
-      navigate("/portfolio");
-    } else {
-      // user is not signed in but the link is valid
-      if (isSignInWithEmailLink(auth, window.location.href)) {
-        // now in case user clicks the email link on a different device, we will ask for email confirmation
-        let email = localStorage.getItem("email");
-        if (!email) {
-          toast.success("Please provide your email");
-        }
-        // after that we will complete the login process
-        let toastId = toast.loading("Loading Please wait ...");
-        signInWithEmailLink(
-          auth,
-          localStorage.getItem("email"),
-          window.location.href
-        )
-          .then((result) => {
-            console.log(result.user);
-            localStorage.removeItem("email");
-            toast.dismiss(toastId);
-            navigate("/portfolio");
-          })
-          .catch((err) => {
-            toast.error(err.message, {
-              id: toastId,
-            });
-            navigate("/");
-          });
+      const userExists = checkUserExistsOnBackend(user);
+      if (userExists) {
+        navigate("/profile");
       } else {
-        console.log("enter email and sign in");
+        // user is not signed in but the link is valid
+        if (isSignInWithEmailLink(auth, window.location.href)) {
+          // now in case user clicks the email link on a different device, we will ask for email confirmation
+          let email = localStorage.getItem("email");
+          if (!email) {
+            toast.error("Please provide your email");
+          }
+          // after that we will complete the login process
+          let toastId = toast.loading("Loading Please wait ...");
+          signInWithEmailLink(
+            auth,
+            localStorage.getItem("email"),
+            window.location.href
+          )
+            .then((result) => {
+              console.log(result.user);
+              localStorage.removeItem("email");
+              registerUserWithBackend(result.user);
+              toast.success("sign-in successful!", {
+                id: toastId,
+              });
+              navigate("/profile");
+            })
+            .catch((err) => {
+              toast.error(err.message, {
+                id: toastId,
+              });
+              navigate("/");
+            });
+        } else {
+          toast.error("Please provide your email");
+        }
       }
     }
   }, [user, search, navigate]);
 
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
     let toastId = toast.loading("Loading Please wait ...");
-    sendSignInLinkToEmail(auth, values.email, {
-      // this is the URL that we will redirect back to after clicking on the link in mailbox
-      url: "https://yieldflow-clone.vercel.app/",
-      handleCodeInApp: true,
-    })
-      .then(() => {
-        localStorage.setItem("email", values.email);
-        toast.success("We have sent you an email with a link to sign in", {
-          id: toastId,
-        });
-      })
-      .catch((err) => {
-        toast.error(err.message, {
-          id: toastId,
-        });
+    try {
+      await sendSignInLinkToEmail(auth, values.email, {
+        url: "https://yieldflow-clone.vercel.app/" || "http://localhost:4000/",
+        handleCodeInApp: true,
       });
+      localStorage.setItem("email", values.email);
+      toast.success("We have sent you an email with a link to sign in", {
+        id: toastId,
+      });
+    } catch (err) {
+      toast.error(err.message, {
+        id: toastId,
+      });
+    }
+  };
+  // const apiUrl = "http://localhost:3000/api/v1/users";
+
+  const handleGoogleSignIn = async () => {
+    let toastId = toast.loading("Loading Please wait ...");
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      // Check if the user already exists on the backend
+      const userExists = await checkUserExistsOnBackend(user);
+      if (userExists) {
+        toast.error("User already exist", {
+          id: toastId,
+        });
+        //else then register
+      } else {
+        // Call the registration API here
+        await registerUserWithBackend(user);
+        toast.success("sign-in successful!", {
+          id: toastId,
+        });
+      }
+    } catch (err) {
+      toast.error(err.message, {
+        id: toastId,
+      });
+    }
+  };
+  const checkUserExistsOnBackend = async (user) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/users/by/email?value=${user.email}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const { status } = await response.json();
+      if (status === "Success") {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error("Error checking user existence:", error);
+      return false;
+    }
   };
 
-  const handleGoogleSignIn = () => {
-    let toastId = toast.loading("Loading Please wait ...");
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        toast.success("We have sent you an email with a link to sign in", {
-          id: toastId,
-        });
-        console.log(user);
-      })
-      .catch((err) => {
-        toast.error(err.message, {
-          id: toastId,
-        });
-      });
+  const registerUserWithBackend = async (user) => {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/v1/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log("User registration response:", data);
+      // Handle the registration response as needed
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
   };
 
   return (
@@ -110,7 +173,7 @@ function Auth() {
           alignItems: "center",
           minHeight: "100vh",
           height: "100%",
-          flexDirection:"column"
+          flexDirection: "column",
         }}
       >
         <Logo
@@ -136,7 +199,7 @@ function Auth() {
             <Col span={24} style={{ padding: "6px" }}>
               <p
                 style={{
-                  textAlign:"center",
+                  textAlign: "center",
                   margin: "0px 0px 12px",
                   fontSize: "26px",
                   fontWeight: "bold",

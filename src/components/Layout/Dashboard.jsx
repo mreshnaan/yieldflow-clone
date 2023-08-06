@@ -3,10 +3,13 @@ import { Button, Drawer, Layout } from "antd";
 import MenuItems from "../MenuItems";
 import Logo from "../Logo";
 import { useMediaQuery } from "react-responsive";
+import { signOut } from "firebase/auth";
+
 // import WalletModal from "../Modals/WalletModal";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import Amount from "../Cards/Amount";
+import { auth } from "../../utils/FirebaseConfig";
 
 const { Header, Sider, Content } = Layout;
 
@@ -22,6 +25,20 @@ const Dashboard = ({ children }) => {
 
   const [open, setOpen] = useState(false);
 
+  function logoutUser() {
+    signOut(auth)
+      .then(() => {
+        // clear session storage
+        sessionStorage.clear();
+        window.location.replace("/");
+        alert("Logged Out Successfully");
+      })
+      .catch((error) => {
+        // An error happened.
+        alert(error);
+      });
+  }
+
   const showDrawer = () => {
     setOpen(true);
   };
@@ -30,7 +47,7 @@ const Dashboard = ({ children }) => {
     setOpen(false);
   };
 
-   return (
+  return (
     <Layout style={{ minHeight: "100vh" }}>
       {isMobile ? (
         <Header style={{ background: "white" }}>
@@ -80,6 +97,19 @@ const Dashboard = ({ children }) => {
                   }}
                 >
                   <Amount amount={"1.3"} />
+                  <Button
+                    size="large"
+                    type="primary"
+                    style={{
+                      background: "rgb(75, 30, 150) !important",
+                      width: "100%",
+                      height: "40px",
+                    }}
+                    onClick={logoutUser}
+                  >
+                    logOut
+                  </Button>
+
                   {/* <WalletModal /> */}
                 </div>
               </div>
@@ -118,6 +148,18 @@ const Dashboard = ({ children }) => {
               }}
             >
               <Amount amount={"1.3"} />
+              <Button
+                size="large"
+                type="primary"
+                style={{
+                  background: "rgb(75, 30, 150) !important",
+                  width: "100%",
+                  height: "40px",
+                }}
+                onClick={logoutUser}
+              >
+                logOut
+              </Button>
               {/* <WalletModal /> */}
             </div>
           </div>
