@@ -133,10 +133,6 @@ function BuyPurpView() {
                   addonAfter={
                     <Select defaultValue="eth" onChange={handleCurrencyChange}>
                       <Option value="eth">ETH</Option>
-                      <Option value="matic">MATIC</Option>
-                      <Option value="axies">Axies</Option>
-                      <Option value="imo">IMO</Option>
-                      <Option value="aa">AA</Option>
                     </Select>
                   }
                   placeholder="Enter Amount"
