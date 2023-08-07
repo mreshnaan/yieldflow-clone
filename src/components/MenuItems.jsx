@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, DollarOutlined } from "@ant-design/icons";
 
 import { AffiliateSvg, HomeSvg, ProductSvg, WalletSvg } from "./Icon/Icons";
 import CustomIcons from "./Icon/CustomIcons";
@@ -16,7 +16,12 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem(<Link to="/portfolio">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
+  getItem(
+    <Link to="/portfolio">portfolio</Link>,
+    "1",
+    <CustomIcons svg={HomeSvg} />
+  ),
+  getItem(<Link to="/buy-token">Buy Token</Link>, "2", <DollarOutlined />),
   getItem("products", "sub1", <CustomIcons svg={ProductSvg} />, [
     // getItem(
     //   <Link to="/purplefi">X Fund</Link>,

@@ -8,14 +8,10 @@ const fetchConversionRates = () => {
     // Simulate an API delay of 1 second
     setTimeout(() => {
       const conversionRates = {
-        eth: 20,
-        matic: 10,
-        axies: 30,
-        imo: 15,
-        aa: 50,
+        eth: 1827.46,
       };
       resolve(conversionRates);
-    }, 1000);
+    }, 100);
   });
 };
 
@@ -47,7 +43,11 @@ function BuyToken() {
     if (!isNaN(value) && value !== "") {
       setInputValue(value);
       const conversionRate = conversionRates[selectedCurrency] || 1;
-      const receiveAmount = (parseFloat(value) * conversionRate * purpRate).toFixed(2);
+      const receiveAmount = (
+        parseFloat(value) *
+        conversionRate *
+        purpRate
+      ).toFixed(2);
       setReceiveAmount(receiveAmount);
     } else {
       setInputValue("");
@@ -117,12 +117,14 @@ function BuyToken() {
         >
           {!loading && (
             <>
-              <span>
-                {selectedCurrency} Conversion Rate:{" "}
+              <span style={{ textTransform: "capitalize" }}>
+                {selectedCurrency} Conversion Rate :{" "}
                 {conversionRates[selectedCurrency] || 1}
               </span>
               <br />
-              <span>purp Conversion Rate: {purpRate}</span>
+              <span style={{ textTransform: "capitalize" }}>
+                purp Conversion Rate : {purpRate}
+              </span>
               <br />
               <br />
 
