@@ -46,3 +46,45 @@ h6 {
   color: red;
 } */
 
+.subscription-packages-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.subscription-packages-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.subscription-packages-subtitle {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.subscription-packages-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.package-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.package-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.package-features li {
+  margin-bottom: 5px;
+}

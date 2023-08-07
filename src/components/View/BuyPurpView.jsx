@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-key */
 import { useEffect, useState } from "react";
-import { Input, Select, Button, Form } from "antd";
+import { Input, Select, Button, Form, Card } from "antd";
 const { Option } = Select;
 
 // Fake API promise function that simulates fetching conversion rates
@@ -84,6 +85,30 @@ function BuyPurpView() {
     console.log("Buy button clicked!");
   };
 
+  const subscriptionPackages = [
+    {
+      name: "Gold",
+      price: "$0.30",
+      amount: "$300",
+      tokens: "1000",
+      platformFees: "0%",
+    },
+    {
+      name: "Platinum",
+      price: "$0.28",
+      amount: "$1,400",
+      tokens: "5000",
+      platformFees: "0%",
+    },
+    {
+      name: "Black Diamond",
+      price: "$0.26",
+      amount: "$3,900",
+      tokens: "15000",
+      platformFees: "0%",
+    },
+  ];
+
   return (
     <>
       <div
@@ -104,12 +129,64 @@ function BuyPurpView() {
         >
           Buy Purp
         </h1>
+        <div className="subscription-packages-container">
+          <h1 className="subscription-packages-title">Packages</h1>
+          <h1 className="subscription-packages-subtitle">Phase 1</h1>
+          <div className="subscription-packages-list">
+            {subscriptionPackages.map((packageItem) => (
+              <Card
+                key={packageItem.name}
+                title={packageItem.name}
+                style={{ width: 300 }}
+              >
+                <div
+                  style={{
+                    padding: "20px",
+                  }}
+                >
+                  <p className="package-price">{packageItem.price}</p>
+                  <div
+                    style={{
+                      margin: "0",
+                      padding: "0",
+                      listStyle: "none",
+                      background: "#ffffff",
+                      borderTop: "1px solid #f0f0f0",
+                      display: "flex",
+                      borderRadius: " 0 0 8px 8px",
+                      marginBottom: "12px",
+                    }}
+                  ></div>
+                  <p>Amount: {packageItem.amount}</p>
+                  <p>Tokens $PURP: {packageItem.tokens}</p>
+                  <p>Platform Fees Boost: {packageItem.platformFees}</p>
+                </div>
 
+                <div
+                  style={{
+                    height: "30px",
+                  }}
+                ></div>
+              </Card>
+            ))}
+          </div>
+        </div>
+        <h1
+          style={{
+            textAlign: "center",
+            fontSize: "24px",
+            marginTop: "24px",
+            marginBottom: "24px",
+          }}
+        >
+          Buy Token
+        </h1>
         <Form
           layout={"vertical"}
           name="basic"
           initialValues={{ size: "default" }}
           style={{
+            marginTop: "24px",
             width: "70%",
           }}
           size={"middle"}
