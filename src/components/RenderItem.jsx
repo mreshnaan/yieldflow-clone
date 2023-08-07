@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Col, Row } from "antd";
-import Stacking from "./Cards/Staking";
+import Staking from "./Cards/Staking";
 
 function RenderItem({ items }) {
   return (
@@ -14,7 +14,7 @@ function RenderItem({ items }) {
       >
         {items.map((item, index) => (
           <Col xs={24} sm={24} md={24} lg={12} key={index}>
-            <Stacking
+            <Staking
               img={item.img}
               title={item.title}
               tooltip_message={item.tooltip_message}

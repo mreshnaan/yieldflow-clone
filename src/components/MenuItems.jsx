@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from "@ant-design/icons";
 
 import { AffiliateSvg, HomeSvg, ProductSvg, WalletSvg } from "./Icon/Icons";
 import CustomIcons from "./Icon/CustomIcons";
@@ -16,7 +16,7 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem(<Link to="/portfolio">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
+  // getItem(<Link to="/portfolio">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
   getItem("products", "sub1", <CustomIcons svg={ProductSvg} />, [
     getItem(
       <Link to="/purplefi">X Fund</Link>,
@@ -24,25 +24,25 @@ const items = [
       <CustomIcons svg={WalletSvg} />
     ),
     getItem(
-      <Link to="/staking">Stacking</Link>,
+      <Link to="/staking">Staking</Link>,
       "4",
       <CustomIcons svg={WalletSvg} />
     ),
-    getItem(
-      <Link to="/liquidity-pool">Liquidity Pool</Link>,
-      "5",
-      <CustomIcons svg={WalletSvg} />
-    ),
-    getItem(
-      <Link to="/liquidity-pool-staking">Lp Token Stacking</Link>,
-      "6",
-      <CustomIcons svg={WalletSvg} />
-    ),
-    getItem(
-      <Link to="/lending">Lending</Link>,
-      "7",
-      <CustomIcons svg={WalletSvg} />
-    ),
+    // getItem(
+    //   <Link to="/liquidity-pool">Liquidity Pool</Link>,
+    //   "5",
+    //   <CustomIcons svg={WalletSvg} />
+    // ),
+    // getItem(
+    //   <Link to="/liquidity-pool-staking">Lp Token Staking</Link>,
+    //   "6",
+    //   <CustomIcons svg={WalletSvg} />
+    // ),
+    // getItem(
+    //   <Link to="/lending">Lending</Link>,
+    //   "7",
+    //   <CustomIcons svg={WalletSvg} />
+    // ),
   ]),
   getItem("Affiliate", "sub2", <CustomIcons svg={AffiliateSvg} />, [
     getItem(

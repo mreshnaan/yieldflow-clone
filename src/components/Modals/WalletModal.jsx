@@ -11,26 +11,16 @@ import {
 } from "wagmi";
 import { toast } from "react-hot-toast";
 import { Configs } from "../../utils/configs";
+import SignMessageModal from "./SignMessageModal";
 
 const WalletModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isConnected, address } = useAccount();
 
   const { chain } = useNetwork();
-  const {
-    connectors,
-    error,
-    isLoading,
-    connectAsync,
-  } = useConnect();
+  const { connectors, error, isLoading, connectAsync } = useConnect();
   const { disconnect } = useDisconnect();
-  const {
-    data,
-    signMessage,
-    isSuccess,
-    error: signError,
-    isLoading: isSignLoading,
-  } = useSignMessage();
+  const { data, isLoading: isSignLoading, signMessageAsync } = useSignMessage();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -40,10 +30,13 @@ const WalletModal = () => {
     setIsModalOpen(false);
   };
 
-  const handleWalletConnect = async (selectConnector) => {
-    const { chain } = await connectAsync({ connector: selectConnector });
+  const handleWalletConnect = async (selectConnector, isSign) => {
+    const connectRes = await connectAsync({ connector: selectConnector });
+    if (isSign) {
+      generateSignatureMessage(connectRes.account);
+    }
 
-    if (chain.unsupported) {
+    if (connectRes.chain.unsupported) {
       toast(
         <>
           <span style={{ color: "black", fontSize: "14px" }}>
@@ -88,6 +81,12 @@ const WalletModal = () => {
     }
   };
 
+  const generateSignatureMessage = async (signer) => {
+    const nonce = Date.now().toString();
+    const signatureMessage = `nonce: ${nonce} address: ${signer}`;
+    await signMessageAsync({ message: signatureMessage });
+  };
+
   const isChainSupported = chain?.id
     ? Configs.SUPPORTED_CHAIN_IDS.includes(chain.id)
     : false;
@@ -101,7 +100,7 @@ const WalletModal = () => {
 
   //wallet connect status
   useEffect(() => {
-    let loadingToastId, errorToastId, successToastId;
+    let loadingToastId, errorToastId;
 
     if (isLoading) {
       loadingToastId = toast.loading("Loading please wait ...");
@@ -110,70 +109,15 @@ const WalletModal = () => {
     if (error) {
       errorToastId = toast.error("Error connecting wallet: " + error.details);
     }
-
-    if (isConnected) {
-      successToastId = toast.success("Connected");
-    }
-
     return () => {
       if (loadingToastId) {
         toast.dismiss(loadingToastId);
       }
       if (errorToastId) {
         toast.dismiss(errorToastId);
-      }
-      if (successToastId) {
-        generateSignatureMessage();
-        toast.dismiss(successToastId);
       }
     };
   }, [isLoading, error, isConnected]);
-
-  //sign message status
-  useEffect(() => {
-    let loadingToastId, errorToastId, successToastId;
-    if (isConnected) {
-      if (isSignLoading) {
-        loadingToastId = toast.loading("Loading please wait ...");
-      }
-      if (isSuccess) {
-        successToastId = toast.success("Signed");
-      }
-      if (signError) {
-        // if (signError.details === "Connector not found") {
-        //   console.log(signError.details);
-        //   errorToastId = toast.error(
-        //     "Error connecting wallet: " + "PLease sign in to Continue"
-        //   );
-        // } else {}
-        console.log(signError.details);
-        errorToastId = toast.error(
-          "Error connecting wallet: " + signError.details
-        );
-        setTimeout(() => {
-          disconnect();
-        }, 1500);
-      }
-    }
-    return () => {
-      if (loadingToastId) {
-        toast.dismiss(loadingToastId);
-      }
-      if (errorToastId) {
-        toast.dismiss(errorToastId);
-      }
-      if (successToastId) {
-        toast.dismiss(successToastId);
-      }
-    };
-  }, [isSuccess, signError, isSignLoading]);
-
-  const generateSignatureMessage = async () => {
-    const signer = address;
-    const nonce = Date.now().toString();
-    const signatureMessage = `nonce: ${nonce} address:${signer}`;
-    await signMessage({ message: signatureMessage });
-  };
 
   // const isCheckUserExist = () => {};
 
@@ -209,14 +153,10 @@ const WalletModal = () => {
 
   return (
     <>
-      {isSuccess && (
+      {isConnected && (
         <>
           <div>
-            {data && (
-              <div>
-                <div>Signature: {data}</div>
-              </div>
-            )}
+      
             <Button
               size="large"
               type="primary"
@@ -227,13 +167,14 @@ const WalletModal = () => {
               }}
               onClick={disconnect}
             >
-              Disconnect
+              Disconnect Wallet
             </Button>
           </div>
         </>
       )}
-      {!isSuccess && (
+      {!isConnected && (
         <>
+         <div>
           <Button
             size="large"
             type="primary"
@@ -246,8 +187,10 @@ const WalletModal = () => {
           >
             {isLoading || isSignLoading ? " Connecting..." : " Connect Wallet"}
           </Button>
+          </div>
         </>
       )}
+
       <Modal
         open={isModalOpen}
         onCancel={handleCancel}
@@ -273,7 +216,7 @@ const WalletModal = () => {
           >
             <Wallet
               onClickHandler={() => {
-                handleWalletConnect(connectors[0]);
+                handleWalletConnect(connectors[0], true);
                 handleCancel();
               }}
               img={
@@ -295,7 +238,7 @@ const WalletModal = () => {
           >
             <Wallet
               onClickHandler={() => {
-                handleWalletConnect(connectors[1]);
+                handleWalletConnect(connectors[1], true);
                 // connect({ connector: connectors[1] });
                 handleCancel();
               }}
@@ -318,7 +261,7 @@ const WalletModal = () => {
           >
             <Wallet
               onClickHandler={() => {
-                handleWalletConnect(connectors[2]);
+                handleWalletConnect(connectors[2], true);
                 // connect({ connector: connectors[2] });
                 handleCancel();
               }}

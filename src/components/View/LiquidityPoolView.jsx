@@ -36,7 +36,7 @@ function LiquidityPoolView() {
     },
   ];
 
-  const StackingButtons = [
+  const StakingButtons = [
     {
       title: "Activate",
       disable: false,
@@ -60,7 +60,7 @@ function LiquidityPoolView() {
     },
   ];
 
-  const stackingItems = [
+  const StakingItems = [
     {
       img: "https://app.yieldflow.com/static/media/link.24598efaf5620ad4a77f6b69a4b9f42e.svg",
 
@@ -70,7 +70,7 @@ function LiquidityPoolView() {
       data: {
         apy: "6.5%",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
 
     {
@@ -82,7 +82,7 @@ function LiquidityPoolView() {
       data: {
         apy: "4.5 %",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
 
     {
@@ -94,7 +94,7 @@ function LiquidityPoolView() {
       data: {
         apy: "6.36%",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
     {
       img: "https://app.yieldflow.com/static/media/hex.f469927f594827e5fc6291a3ff922793.svg",
@@ -105,7 +105,7 @@ function LiquidityPoolView() {
       data: {
         apy: "5.87%",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
   ];
 
@@ -124,7 +124,7 @@ function LiquidityPoolView() {
       />
       <HeadLine id="liquidity-pool-title" title={"Browse Pairs"} />
 
-      <RenderItem items={stackingItems} />
+      <RenderItem items={StakingItems} />
     </>
   );
 }

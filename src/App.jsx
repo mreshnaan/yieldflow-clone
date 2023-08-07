@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import PurpleFi from "./pages/PurpleFi";
 import Error from "./pages/Error";
-import Stacking from "./pages/Stacking";
+import Staking from "./pages/Staking";
 import LiquidityPool from "./pages/LiquidityPool";
 import LPTokenStaking from "./pages/LPTokenStaking";
 import Lending from "./pages/Lending";
@@ -83,7 +83,7 @@ function App() {
     },
     {
       path: "/staking",
-      element: <Stacking />,
+      element: <Staking />,
     },
     {
       path: "/liquidity-pool",

@@ -181,9 +181,9 @@ const Dashboard = ({ children }) => {
           >
             <div
               style={{
-                maxWidth: "1050px",
+                // maxWidth: "1050px",
                 margin: "0px auto",
-                marginRight: "10%",
+                marginRight: `${isMobile ? "0px" : "0%"}`,
                 padding: "0px 30px",
                 width: "100%",
               }}

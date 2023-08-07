@@ -37,7 +37,7 @@ function PurpleFiView() {
     },
   ];
 
-  const StackingButtons = [
+  const StakingButtons = [
     {
       title: "APPROVE",
       disable: false,
@@ -88,7 +88,7 @@ function PurpleFiView() {
     },
   ];
 
-  const stackingItems = [
+  const StakingItems = [
     {
       img: JPGLogo,
       title: "PurpleFi X Fund Staking No Lock",
@@ -99,7 +99,7 @@ function PurpleFiView() {
         pool: "in a month",
         currentStack: "0",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
     {
       img: JPGLogo,
@@ -111,7 +111,7 @@ function PurpleFiView() {
         pool: "in a month",
         currentStack: "0",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
     {
       img: JPGLogo,
@@ -123,7 +123,7 @@ function PurpleFiView() {
         pool: "in a month",
         currentStack: "0",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
     {
       img: JPGLogo,
@@ -135,7 +135,7 @@ function PurpleFiView() {
         pool: "in a month",
         currentStack: "0",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
   ];
 
@@ -155,7 +155,7 @@ function PurpleFiView() {
 
 
 
-      <RenderItem items={stackingItems} />
+      <RenderItem items={StakingItems} />
     </>
   );
 }

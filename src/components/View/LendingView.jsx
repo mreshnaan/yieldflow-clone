@@ -36,7 +36,7 @@ function LendingView() {
     },
   ];
 
-  const StackingButtons = [
+  const StakingButtons = [
     {
       title: "Activate",
       disable: false,
@@ -49,7 +49,7 @@ function LendingView() {
     },
   ];
 
-  const stackingItems = [
+  const StakingItems = [
     {
       img: "https://app.yieldflow.com/static/media/usdt.6dc09781df56f4a369623b3cb8349479.svg",
 
@@ -59,7 +59,7 @@ function LendingView() {
       data: {
         apy: "2.71%",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
     {
       img: "https://app.yieldflow.com/static/media/snx.33a63b7ff36bfee20a6c308ed0796637.svg",
@@ -70,7 +70,7 @@ function LendingView() {
       data: {
         apy: "2.89%",
       },
-      buttons: StackingButtons,
+      buttons: StakingButtons,
     },
   ];
 
@@ -90,7 +90,7 @@ function LendingView() {
       />
       <HeadLine id="lending-title" title={"Ongoing batches"} />
 
-      <RenderItem items={stackingItems} />
+      <RenderItem items={StakingItems} />
      
     </>
   );

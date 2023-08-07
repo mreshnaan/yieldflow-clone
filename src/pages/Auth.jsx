@@ -1,5 +1,5 @@
 import { Button, Card, Col, Form, Input, Row } from "antd";
-import { GoogleOutlined } from "@ant-design/icons"; // Import the Google icon
+import { GoogleOutlined } from "@ant-design/icons";
 import { toast } from "react-hot-toast";
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -26,47 +26,42 @@ function Auth() {
     console.log("Form submitted:", values);
     handleLogin(values);
   };
-
+  //https://firebase.google.com/docs/auth/web/email-link-auth#web-namespaced-api_2
   useEffect(() => {
     // Check if the user already exists on the backend and firebase
     //else register
     if (user) {
-      const userExists = checkUserExistsOnBackend(user);
-      if (userExists) {
-        navigate("/profile");
-      } else {
-        // user is not signed in but the link is valid
-        if (isSignInWithEmailLink(auth, window.location.href)) {
-          // now in case user clicks the email link on a different device, we will ask for email confirmation
-          let email = localStorage.getItem("email");
-          if (!email) {
-            toast.error("Please provide your email");
-          }
-          // after that we will complete the login process
-          let toastId = toast.loading("Loading Please wait ...");
-          signInWithEmailLink(
-            auth,
-            localStorage.getItem("email"),
-            window.location.href
-          )
-            .then((result) => {
-              console.log(result.user);
-              localStorage.removeItem("email");
-              registerUserWithBackend(result.user);
-              toast.success("sign-in successful!", {
-                id: toastId,
-              });
-              navigate("/profile");
-            })
-            .catch((err) => {
-              toast.error(err.message, {
-                id: toastId,
-              });
-              navigate("/");
-            });
-        } else {
-          toast.error("Please provide your email");
+      navigate("/profile");
+    } else {
+      // user is not signed in but the link is valid
+      if (isSignInWithEmailLink(auth, window.location.href)) {
+        // now in case user clicks the email link on a different device, we will ask for email confirmation
+        let email = localStorage.getItem("email");
+        if (!email) {
+          email = window.prompt("Please provide your email");
+          // toast.error("Please provide your email");
         }
+        // after that we will complete the login process
+        let toastId = toast.loading("Loading Please wait ...");
+        signInWithEmailLink(
+          auth,
+          localStorage.getItem("email"),
+          window.location.href
+        )
+          .then((result) => {
+            console.log(result.user);
+            localStorage.removeItem("email");
+            toast.success("sign-in successful!", {
+              id: toastId,
+            });
+            navigate("/profile");
+          })
+          .catch((err) => {
+            toast.error(err.message, {
+              id: toastId,
+            });
+            navigate("/");
+          });
       }
     }
   }, [user, search, navigate]);
@@ -88,27 +83,19 @@ function Auth() {
       });
     }
   };
-  // const apiUrl = "http://localhost:3000/api/v1/users";
 
   const handleGoogleSignIn = async () => {
     let toastId = toast.loading("Loading Please wait ...");
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      // Check if the user already exists on the backend
-      const userExists = await checkUserExistsOnBackend(user);
-      if (userExists) {
-        toast.error("User already exist", {
-          id: toastId,
-        });
-        //else then register
-      } else {
-        // Call the registration API here
-        await registerUserWithBackend(user);
-        toast.success("sign-in successful!", {
-          id: toastId,
-        });
-      }
+      localStorage.setItem("email", user.email);
+
+      console.log(user);
+      toast.success("sign-in successful!", {
+        id: toastId,
+      });
+      navigate("/profile");
     } catch (err) {
       toast.error(err.message, {
         id: toastId,
@@ -127,12 +114,8 @@ function Auth() {
         }
       );
 
-      const { status } = await response.json();
-      if (status === "Success") {
-        return true;
-      } else {
-        return false;
-      }
+      const data = await response.json();
+      return data;
     } catch (error) {
       console.error("Error checking user existence:", error);
       return false;
@@ -158,7 +141,7 @@ function Auth() {
 
       const data = await response.json();
       console.log("User registration response:", data);
-      // Handle the registration response as needed
+      return data;
     } catch (error) {
       console.error("Error registering user:", error);
     }
