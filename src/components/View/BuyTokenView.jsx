@@ -15,7 +15,7 @@ const fetchConversionRates = () => {
   });
 };
 
-function BuyToken() {
+function BuyTokenView() {
   const [form] = Form.useForm();
   const [inputValue, setInputValue] = useState("");
   const [selectedCurrency, setSelectedCurrency] = useState("eth");
@@ -174,4 +174,4 @@ function BuyToken() {
   );
 }
 
-export default BuyToken;
+export default BuyTokenView;
