@@ -167,7 +167,7 @@ function BuyTokenView() {
             </>
           )}
 
-          {loading && <span>Loading conversion rates...</span>}
+          {loading && <span>Loading conversion rate.</span>}
         </Form>
       </div>
     </>
