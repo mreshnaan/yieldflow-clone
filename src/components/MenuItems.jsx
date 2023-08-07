@@ -16,13 +16,13 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  // getItem(<Link to="/portfolio">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
+  getItem(<Link to="/portfolio">portfolio</Link>, "1", <CustomIcons svg={HomeSvg} />),
   getItem("products", "sub1", <CustomIcons svg={ProductSvg} />, [
-    getItem(
-      <Link to="/purplefi">X Fund</Link>,
-      "3",
-      <CustomIcons svg={WalletSvg} />
-    ),
+    // getItem(
+    //   <Link to="/purplefi">X Fund</Link>,
+    //   "3",
+    //   <CustomIcons svg={WalletSvg} />
+    // ),
     getItem(
       <Link to="/staking">Staking</Link>,
       "4",

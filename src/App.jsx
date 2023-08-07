@@ -13,7 +13,7 @@ import { ConfigProvider } from "antd";
 import Auth from "./pages/Auth";
 import { Toaster } from "react-hot-toast";
 
-import { mainnet, polygon, optimism } from 'wagmi/chains'
+import { mainnet, polygon, optimism } from "wagmi/chains";
 
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
 
@@ -25,17 +25,17 @@ import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import Profile from "./pages/Profile";
+import BuyToken from "./pages/Buytoken";
 
 // Configure chains & providers with the Alchemy provider.
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, polygon, optimism ],
+  [mainnet, polygon, optimism],
   [
     infuraProvider({ apiKey: "bb90504ac674448b86a043b6e7b30044" }),
     publicProvider(),
   ]
 );
-
 
 // Set up wagmi config
 const config = createConfig({
@@ -72,6 +72,10 @@ function App() {
     {
       path: "/profile",
       element: <Profile />,
+    },
+    {
+      path: "/buy-token",
+      element: <BuyToken />,
     },
     {
       path: "/portfolio",

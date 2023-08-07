@@ -21,7 +21,7 @@ const contentStyle = {
 };
 
 const Dashboard = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 768 }); // Set the desired mobile breakpoint here
+  const isMobile = useMediaQuery({ maxWidth: 768 }); // Set the desired mobile breakpoint
 
   const [open, setOpen] = useState(false);
 

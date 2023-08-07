@@ -4,7 +4,7 @@ import WalletModal from "../Modals/WalletModal";
 import { toast } from "react-hot-toast";
 import { useMediaQuery } from "react-responsive";
 function ProfileView() {
-  const isMobile = useMediaQuery({ maxWidth: 768 }); // Set the desired mobile breakpoint here
+  const isMobile = useMediaQuery({ maxWidth: 768 }); // Set the desired mobile breakpoint
 
   const onFinish = (values) => {
     console.log("Success:", values);
