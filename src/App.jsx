@@ -25,7 +25,7 @@ import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import Profile from "./pages/Profile";
-import BuyToken from "./pages/Buytoken";
+import BuyPurp from "./pages/BuyPurp";
 
 // Configure chains & providers with the Alchemy provider.
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
@@ -75,7 +75,7 @@ function App() {
     },
     {
       path: "/buy-token",
-      element: <BuyToken />,
+      element: <BuyPurp />,
     },
     {
       path: "/portfolio",
