@@ -45,7 +45,43 @@ function HomeView() {
       sorter: (a, b) => a.bonus - b.bonus,
     },
   ];
-  const data = [];
+  const data = [
+    {
+      key: 1,
+      email: "john.doe@gmail.com",
+      signup: "Complete",
+      date: "2023-08-08",
+      bonus: 100,
+    },
+    {
+      key: 2,
+      email: "jane.smith@yahoo.com",
+      signup: "Incomplete",
+      date: "2023-08-07",
+      bonus: 50,
+    },
+    {
+      key: 3,
+      email: "sam.wilson@gmail.com",
+      signup: "Complete",
+      date: "2023-08-06",
+      bonus: 75,
+    },
+    {
+      key: 4,
+      email: "susan.jones@gmail.com",
+      signup: "Complete",
+      date: "2023-08-05",
+      bonus: 120,
+    },
+    {
+      key: 5,
+      email: "michael.smith@gmail.com",
+      signup: "Incomplete",
+      date: "2023-08-04",
+      bonus: 90,
+    },
+  ];
 
   const stats = [
     {
