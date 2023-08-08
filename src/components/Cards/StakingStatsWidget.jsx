@@ -47,7 +47,7 @@ function StakingStatsWidget() {
                         fontSize: "20px",
                       }}
                     >
-                      AXS
+                      PURP
                     </span>
                   </span>
                 </p>
@@ -149,7 +149,7 @@ function StakingStatsWidget() {
                 fontWeight: "500",
               }}
             >
-              AXS Stats
+              PURP Stats
             </h5>
             <Row gutter={[16, 16]}>
               <Col
@@ -178,7 +178,7 @@ function StakingStatsWidget() {
                       fontWeight: "600",
                     }}
                   >
-                    AXS Price
+                    PURP Price
                   </p>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <p>
@@ -232,7 +232,7 @@ function StakingStatsWidget() {
                           fontWeight: "700",
                         }}
                       >
-                        50,516 AXS
+                        50,516 PURP
                       </span>
                     </p>
                   </div>
@@ -276,7 +276,7 @@ function StakingStatsWidget() {
                           fontWeight: "700",
                         }}
                       >
-                        113,853,028 AXS
+                        113,853,028 PURP
                       </span>
                     </p>
                   </div>

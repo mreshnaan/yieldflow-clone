@@ -81,8 +81,10 @@ function BuyPurpView() {
   };
 
   const handleBuy = () => {
-    // Perform the buy logic here
-    console.log("Buy button clicked!");
+    console.log(receiveAmount);
+  };
+  const handlePackageSelect = (packageItem) => {
+    console.log(packageItem);
   };
 
   const subscriptionPackages = [
@@ -138,6 +140,14 @@ function BuyPurpView() {
                 key={packageItem.name}
                 title={packageItem.name}
                 style={{ width: 300 }}
+                actions={[
+                  <Button
+                    type="primary"
+                    onClick={() => handlePackageSelect(packageItem)}
+                  >
+                    Buy
+                  </Button>,
+                ]}
               >
                 <div
                   style={{
