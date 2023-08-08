@@ -1,10 +1,9 @@
-import { Button, Card, Col, Row } from "antd";
+import { Card, Col, Row } from "antd";
 
-import Status from "../Cards/Status";
 import {
   WalletOutlined,
-  EyeOutlined,
-  EyeInvisibleOutlined,
+  // EyeOutlined,
+  // EyeInvisibleOutlined,
   GlobalOutlined,
   FileOutlined,
   ShoppingCartOutlined,
@@ -14,32 +13,36 @@ import {
 
 import HeadLine from "../HeadLine";
 import CustomTable from "../Table/CustomTable";
-import { useState } from "react";
+// import { useState } from "react";
 
 function HomeView() {
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const showHandler = () => {
-    setShow(!show);
-  };
+  // const showHandler = () => {
+  //   setShow(!show);
+  // };
 
   const columns = [
     {
-      title: "Product",
-      dataIndex: "product",
-      sorter: (a, b) => a.product - b.product,
+      title: "E-mail",
+      dataIndex: "email",
+      sorter: (a, b) => a.email - b.email,
       width: "30%",
     },
     {
-      title: "Staked Assets	",
-      dataIndex: "stakedassets	",
-      sorter: (a, b) => a.stakedassets - b.stakedassets,
+      title: "Signup",
+      dataIndex: "signup",
+      sorter: (a, b) => a.signup - b.signup,
     },
     {
-      title: "Yield",
-      dataIndex: "yield",
-      sorter: (a, b) => a.yield - b.yield,
-      width: "40%",
+      title: "Date",
+      dataIndex: "date",
+      sorter: (a, b) => a.date - b.date,
+    },
+    {
+      title: "Bonus",
+      dataIndex: "bonus",
+      sorter: (a, b) => a.bonus - b.bonus,
     },
   ];
   const data = [];
